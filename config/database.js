@@ -1,13 +1,13 @@
+require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
-// Direct connection for Render (replace with actual database URL from Render)
-const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/Library_System', {
-  dialect: 'postgres', // Dialect for PostgreSQL
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
   protocol: 'postgres',
   dialectOptions: {
     ssl: {
-      require: true, // Ensures SSL is used on Render
-      rejectUnauthorized: false // Allows self-signed certificates if needed
+      require: true, // Ensures SSL connection
+      rejectUnauthorized: false // Accepts self-signed certificates
     }
   }
 });
