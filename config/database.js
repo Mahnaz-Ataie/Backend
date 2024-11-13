@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 // Direct connection for Render (replace with actual database URL from Render)
-const sequelize = new Sequelize('postgres://postgres:postgres@host:port/Library_System', {
+const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/Library_System', {
   dialect: 'postgres', // Dialect for PostgreSQL
   protocol: 'postgres',
   dialectOptions: {
