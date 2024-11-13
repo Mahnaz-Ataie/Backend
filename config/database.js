@@ -1,10 +1,15 @@
-
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('Library_System' , 'postgres' , 'postgres', {
-  host: 'localhost',  // typically 'localhost'
-  dialect: 'postgres',         // specify the dialect for PostgreSQL /specifies that you're using PostgreSQL
-
+// Direct connection for Render (replace with actual database URL from Render)
+const sequelize = new Sequelize('postgres://postgres:postgres@host:port/Library_System', {
+  dialect: 'postgres', // Dialect for PostgreSQL
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true, // Ensures SSL is used on Render
+      rejectUnauthorized: false // Allows self-signed certificates if needed
+    }
+  }
 });
 
 module.exports = sequelize;
