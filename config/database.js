@@ -1,9 +1,12 @@
 const { Sequelize } = require('sequelize');
 
 
-const sequelize = new Sequelize('Library_System', 'postgres', 'postgres', {
-  host: 'localhost',  // typically 'localhost'
-  dialect: 'postgres',  // specify that you're using PostgreSQL
+const sequelize = new Sequelize({
+  host: process.env.DB_HOST || 'localhost', // Default to localhost if not set
+  username: process.env.DB_USER || 'your_default_user',
+  password: process.env.DB_PASSWORD || 'your_default_password',
+  database: process.env.DB_NAME || 'your_default_db',
+  dialect: 'postgres', 
 });
 
 
